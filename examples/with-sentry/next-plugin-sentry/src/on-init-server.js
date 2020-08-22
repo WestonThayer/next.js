@@ -4,8 +4,10 @@ import { RewriteFrames } from '@sentry/integrations'
 export default async function initServer() {
   Sentry.init({
     dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
-    enabled: process.env.NODE_ENV === 'production',
-    release: process.env.NEXT_PUBLIC_SENTRY_RELEASE,
+    enabled: !!process.env.VERCEL_URL,
+    release: !!process.env.VERCEL_URL
+      ? process.env.VERCEL_URL.replace(/\./g, '_')
+      : '',
     integrations: [
       new RewriteFrames({
         iteratee: (frame) => {

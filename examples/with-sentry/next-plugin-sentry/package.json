@@ -7,10 +7,13 @@
       "NEXT_PUBLIC_SENTRY_DSN"
     ]
   },
+  "dependencies": {
+    "@sentry/integrations": "^5.21.1",
+    "@sentry/webpack-plugin": "^1.12.1"
+  },
   "peerDependencies": {
     "next": "*",
     "@sentry/browser": "*",
-    "@sentry/integrations": "*",
     "@sentry/node": "*"
   }
 }
